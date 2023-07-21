@@ -10,7 +10,7 @@ flag = True
 while flag:
     try:
         tramos_viaje = int(input("Ingrese la cantidad de tramos que tiene su viaje: "))
-        if tramos_viaje == 0:
+        if tramos_viaje <= 0:
             print("Ingrese tramos de viaje superiores a 0")
         else:            
             tiempo_total_viaje = 0
@@ -21,3 +21,5 @@ while flag:
             flag = False
     except:  
         print("Error")
+
+        
