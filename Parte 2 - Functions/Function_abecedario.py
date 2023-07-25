@@ -14,14 +14,18 @@ def delete_words():
         try:
             number = int(input("Input the number 2 or 3: "))
             if (number == 2) or (number == 3):
-                for i in range(0,26,1):
-                    print("Entre")
-                    abecedario.pop(i)
+                lista = []
+                for i in range(0,len(abecedario),number):
+                    lista.append(abecedario[i])
+                for i in lista:
+                    if i in abecedario:
+                        abecedario.remove(i)
+                print(f"Fueron removidas las letras en relacion al multiplo del numero ingresado: {number}. ")
                 print(abecedario)
+                break
             else:
-                print("Entre al else")
+                print("No ingreso numero 2 o numero 3")
         except:
-            print(abecedario)
             print("Error")
 
 delete_words()
