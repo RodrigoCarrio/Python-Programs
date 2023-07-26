@@ -20,7 +20,21 @@ Codigo      Nombre      PRecio  stock
 *   Gestionar posibles errores
 *   Estructurar el programa a criterio propio
 '''
-base_productos = [[1,2,3], ["producto1", "producto2", "producto3"], [300,400,500], [5,4,7]]
+
+def consultar_productos_stock(matriz):
+    while True:
+        print("--------------CONSULTAR STOCK-------------")
+        codigo = input("Ingrese el codigo del producto o ingrese 0 para salir: ")
+        if codigo == "1":
+            print(f"Nombre: {matriz[1][0]} - Cantidad en stock: {matriz[3][0]}")
+        elif codigo == "2":
+            print(f"Nombre: {matriz[1][1]} - Cantidad en stock: {matriz[3][1]}")
+        elif codigo == "3":
+            print(f"Nombre: {matriz[1][2]} - Cantidad en stock: {matriz[3][2]}")
+        elif codigo == "0":
+            break
+        else:
+            print("No ingresó una opcion correcta.")
 
 def agregar_stock(matriz):
     while True:
@@ -143,7 +157,7 @@ def tarjeta_credito(matriz):
 def mostrar_menu(matriz):
     print("Cod.      Producto      Precio    Stock")
     for i in range(len(matriz)-1):
-        print(f"{base_productos[0][i]}            {base_productos[1][i]}        {base_productos[2][i]}        {base_productos[3][i]} ")
+        print(f"{matriz[0][i]}            {matriz[1][i]}        {matriz[2][i]}        {matriz[3][i]} ")
 
 def mostrar_menu2(matriz):
     print("Cod     Producto      Precio   Stock")
@@ -161,26 +175,7 @@ def mostrar_menu_productos(matriz):
             print("")
         for j in range(2):
             print(f"{matriz[j][i]}",end="\t")
-    
-
-def forma_pago():
-    while True:
-        opcion = input("""
-    Ingrese un metodo de pago
-1. Efectivo
-2. Tarjeta Debito
-3. Tarjeta Credito
-opcion: """)
-        if opcion == "1":
-            return "Efectivo"
-        elif opcion == "2":
-            return "Debito"
-        elif opcion == "3":
-            return "Credito"
-        else:
-            print("Opcion incorrecta.")
-
-
+        print("")
 
 def pagar_con_credito2(matriz):
     print(f"--------------PAGO CON CREDITO-------------")
@@ -253,25 +248,25 @@ def pagar_efectivo(matriz):
         print(f"Que producto desea vender:")
         for i in range(len(matriz[1])):
             print(f"{matriz[0][i]}  {matriz[1][i]}")
-        opcion=input("--> ")        
-        if opcion=="1":
-            if(matriz[3][0]>0):
+        opcion = input("--> ")        
+        if opcion == "1":
+            if (matriz[3][0]>0):
                 matriz[3][0]=matriz[3][0]-1 #resto stock
                 suma = matriz[2][0] - (matriz[2][0] *0.1)
                 #print(f"El comprador debe pagar:$ {matriz[2][0]*1.1}")
                 return suma 
             else:
                 print("No hay stock")
-        elif opcion=="2":
-            if(matriz[3][1]>0):
+        elif opcion == "2":
+            if (matriz[3][1]>0):
                 matriz[3][1]=matriz[3][1]-1 #resto stock
                 suma = matriz[2][1] - (matriz[2][1] *0.1)
                 #print(f"El comprador debe pagar:$ {vr.base_productos[2][1]*1.1}")
                 return suma
             else:
                 print("No hay stock")
-        elif opcion=="3":
-            if(matriz[3][2]>0):
+        elif opcion == "3":
+            if (matriz[3][2]>0):
                 matriz[3][2]=matriz[3][2]-1 #resto stock
                 suma = matriz[2][2] - (matriz[2][2] *0.1)
                 #print(f"El comprador debe pagar:$ {vr.base_productos[2][2]*1.1}")
@@ -280,7 +275,3 @@ def pagar_efectivo(matriz):
                 print("No hay stock")
         else:
             print("No ingreso una opcion correcta")
-
-mostrar_menu2(base_productos)
-agregar_stock(base_productos)
-mostrar_menu2(base_productos)
