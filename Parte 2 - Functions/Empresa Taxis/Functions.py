@@ -26,22 +26,24 @@ auto_3  -   chofer_3   -   50
 *   Estructurar el programa a criterio propio
 '''
 
-Taxis=[["auto_1","auto_2","auto_3"],["chofer_1","chofer_2","chofer_3"],[45,50,30]]
 
 def view_driver(matriz):
     while True:
+        print("--------------INFORMACION DEL CHOFER-------------")
         driver = input("Ingrese nombre chofer: ").casefold()
         try:
             index = matriz[1].index(driver)
             if index >= 0:
                 print(f"AUTO   -  RECORRIDO")
                 print(f"{matriz[0][index]} -    {matriz[2][index]}  ")
+                break
         except:
             print("No existe el chofer")
 
 
 def get_cars_by_route(matriz):
     while True:
+        print("--------------INFORMACION POSIBLES VIAJES-------------")
         try:
             route = int(input("Ingrese la ruta del viaje: "))
         except:
@@ -53,6 +55,7 @@ def get_cars_by_route(matriz):
             for i in range(len(matriz[2])):
                 if(route <= matriz[2][i]):
                     print(f"Auto: {matriz[0][i]} - Chofer: {matriz[1][i]}")
+            break
         
 
 def add_new_taxi(matriz):
@@ -67,6 +70,7 @@ def add_new_taxi(matriz):
             matriz[0].append(car)
             matriz[1].append(driver)
             matriz[2].append(route)
+            print(f"Se añadió con exito el Taxi: {car} - {driver} - {route} ")
             break
         else:
             print("Auto ya registrado.")
@@ -93,15 +97,18 @@ def change_name_driver(matriz):
 
 def change_name_driver2(matriz):
     while True:
+        print("--------------CAMBIO DE NOMBRE-------------")
         car = input("Ingrese el auto para modificar el chofer: ")
         try:
             index = matriz[0].index(car)
             matriz[1][index] = input("Ingrese nuevo nombre: ")
+            print(f"Se cambió con exito el nombre a {matriz[1][index]}")
             break
         except:
             print("No existe el auto.")
 
 def list_taxis(matriz):
+    print("-------------- INFORMACION DE TAXIS -------------")
     print("AUTO   -   CHOFER    - RECORRIDO")
     for i in range(len(matriz[0])):
         print(f"{matriz[0][i]} -   {matriz[1][i]}  -    {matriz[2][i]}")
@@ -111,28 +118,12 @@ def change_route(matriz):
         print("--------------CAMBIO DE RUTA-------------")
         car = input("Ingrese el auto para modificar recorrido: ")
         try:
-            route = int(input("Ingrese el recorrido nuevo: "))
+            index = matriz[0].index(car)
+            matriz[2][index] = int(input("Ingrese el recorrido nuevo: "))
+            if (matriz[2][index] <= 0):
+                print("Ingrese recorridos mayores a 0.")
+            else:
+                print(f"Se cambió con exito el recorrido a {matriz[2][index]}")
+                break
         except:
-            print("Error al ingresar recorrido nuevo.")
-
-        if (car == "1") and (route > 0):
-            matriz[2][0] = route
-            break
-
-        elif (car == "2") and (route > 0):
-            matriz[2][1] = route
-            break
-
-        elif (car == "3") and (route > 0):
-            matriz[2][2] = route
-            break
-
-        else:
-            print("Ingresó un auto incorrecto o rutas menores a 0.")
-
-#add_new_taxi(Taxis)
-#list_taxis(Taxis)
-#get_cars_by_route(Taxis)
-#view_driver(Taxis)
-change_name_driver2(Taxis)
-list_taxis(Taxis)
+            print("No se encuentra el auto.")

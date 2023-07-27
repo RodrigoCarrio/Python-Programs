@@ -25,3 +25,34 @@ auto_3  -   chofer_3   -   50
 *   Gestionar posibles errores
 *   Estructurar el programa a criterio propio
 '''
+
+Taxis=[["auto_1","auto_2","auto_3"],["chofer_1","chofer_2","chofer_3"],[45,50,30]]
+import Functions as fu
+
+while True:
+    opcion = input("""
+Ingrese una opcion:
+1. Preguntar recorrido de viaje e indicar posibles autos y choferes.
+2. Modificar nombre chofer segun el nombre del auto.
+3. Modificar el recorrido segun el nombre del auto.
+4. Agregar nuevo auto a la empresa de Taxis, indicando auto, nombre chofer y recorrido maximo.
+5. Mostrar lista de autos choferes y recorrido maximo.
+6. Observar informacion de un chofer.
+7. Salir.
+Opcion: """)
+    if opcion == "1":
+        fu.get_cars_by_route(Taxis)       
+    elif opcion == "2":
+        fu.change_name_driver2(Taxis)
+    elif opcion == "3":
+        fu.change_route(Taxis)
+    elif opcion == "4":
+        fu.add_new_taxi(Taxis)
+    elif opcion == "5":
+        fu.list_taxis(Taxis)
+    elif opcion == "6":
+        fu.view_driver(Taxis)
+    elif opcion == "7":
+        break
+    else:
+        print("No ingresó una opcion.")
