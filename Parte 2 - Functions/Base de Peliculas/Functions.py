@@ -92,6 +92,7 @@ def add_new_films_series(dictionary):
                 print(f"La '{film_serie}' ya se encuentra en la lista. Agregue otra nueva.")
             else:
                 value.append(film_serie)
+                print(f"Se agregó con exito la {option}: '{film_serie}'. ")
                 break
         else:
             print(f"La palabra ingresada '{option}' no encuentra nada.")
